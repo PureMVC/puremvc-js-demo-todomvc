@@ -2,8 +2,7 @@
  * @author Mike Britton
  * 
  * @class ModelPrepCommand
- * @link https://github.com/mbritton/todopuremvc.git
- * 
+ * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  * 
  */
 

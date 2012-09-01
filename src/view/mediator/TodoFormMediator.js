@@ -2,8 +2,7 @@
  * @author Mike Britton
  * 
  * @class TodoFormMediator
- * @link https://github.com/mbritton/todopuremvc.git
- * 
+ * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  * 
  */
 

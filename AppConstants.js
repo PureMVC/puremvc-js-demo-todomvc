@@ -1,6 +1,22 @@
-// create the tododemo namespace
+/**
+ * @author Mike Britton
+ *
+ * @class TodoProxy
+ * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ *
+ */
+
+/**
+ * Create the application namespace.
+ */
 window.todomvc = 
 {
+    /**
+     * Define the core and notification constants.
+     * 
+     * PureMVC JS is multi-core, meaning you may have multiple,
+     * named and isolated PureMVC cores. This app only has one.
+     */
     AppConstants : 
     {
         // The name of the PureMVC core

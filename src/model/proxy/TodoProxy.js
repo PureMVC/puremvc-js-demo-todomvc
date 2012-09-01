@@ -2,11 +2,9 @@
  * @author Mike Britton
  *
  * @class TodoProxy
- * @link https://github.com/mbritton/todopuremvc.git
- *
+ * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  *
  */
-
 puremvc.define
 (
     // CLASS INFO

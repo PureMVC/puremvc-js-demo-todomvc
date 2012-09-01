@@ -2,17 +2,18 @@
  * @author Mike Britton
  * 
  * @class ViewPrepCommand
- * @link https://github.com/mbritton/todopuremvc.git
- * 
+ * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  * 
  */
 
-puremvc.define (
+puremvc.define 
+(
     // CLASS INFO
     {
         name:'todomvc.controller.command.PrepViewCommand',
         parent:puremvc.SimpleCommand
     },
+ 
     // INSTANCE MEMBERS
     {
         /** @override */

@@ -2,8 +2,7 @@
  * @author Mike Britton
  * 
  * @class TodoCommand
- * @link https://github.com/mbritton/todopuremvc.git
- * 
+ * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  * 
  */
 
@@ -71,6 +70,7 @@ puremvc.define
                     proxy.toggleCompleteStatus(note.getBody());
                     this.sendNotification(todomvc.AppConstants.REFRESH_DATA);
                     break;
+               
                 default:
                     console.log('TodoCommand received an unsupported Notification');
                     break;
