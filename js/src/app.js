@@ -24,6 +24,6 @@ puremvc.define
         STARTUP:'startup',
                
         // Get an instance of the PureMVC Facade. This creates the Model, View, and Controller instances.
-        facade: puremvc.Facade.getInstance( todomvc.AppConstants.NAME )
+        facade: puremvc.Facade.getInstance( todomvc.AppConstants.APP_NAME )
     }
 );

@@ -1,96 +1,92 @@
-<!DOCTYPE html>
-<!--
- * PureMVC JavaScript port of the TodoMVC framework comparision demo app
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
- *
- * @author Mike Britton
- *
- * PureMVC Framework for JavaScript
- * http://puremvc.org/
- * https://github.com/PureMVC/puremvc-js-multicore-framework
- *
- * TodoMVC - Helping you select an MV* framework
- * http://todomvc.com/
- * https://github.com/addyosmani/todomvc 
- -->
+<!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>TodoMVC - A PureMVC JavaScript Demo</title>
-        <meta name="author" content="Mike Britton" />
-        <meta http-equiv="Access-Control-Allow-Origin" content="*">
-        <link rel="stylesheet" href="assets/base.css">
-        <!--[if IE]>
-		<script src="assets/ie.js"></script>
-	<![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <title>PureMVC • TodoMVC</title>
+            <link rel="stylesheet" href="assets/base.css">
+            <!--[if IE]>
+                <script src="assets/ie.js"></script>
+            <![endif]-->
     </head>
     <body>
-        <section id="content">
+        <section id="todoapp">
             <header id="header">
                 <h1>todos</h1>
                 <input id="new-todo" placeholder="What needs to be done?" autofocus>
             </header>
+            <!-- This section should be hidden by default and shown when there are todos -->
             <section id="main">
-                <input id="toggle-all" type="checkbox"/>
+                <input id="toggle-all" type="checkbox">
                 <label for="toggle-all">Mark all as complete</label>
-                <ul id="todo-list"></ul>
+                <ul id="todo-list">
+                </ul>
             </section>
+            <!-- This footer should hidden by default and shown when there are todos -->
             <footer id="footer">
-                <span id="todo-count"></span>
-                <button id="clear-completed">
-                    Clear completed
-                </button>
-            </footer>            
+                <!-- This should be `0 items left` by default -->
+                <span id="todo-count"><strong>1</strong> item left</span>
+                <ul id="filters">
+                    <li>
+                        <a id="filterAll" class="selected" href="#/">All</a>
+                    </li>
+                    <li>
+                        <a id="filterActive" href="#/active">Active</a>
+                    </li>
+                    <li>
+                        <a id="filterCompleted" href="#/completed">Completed</a>
+                    </li>
+                </ul>
+                <button id="clear-completed">Clear completed (1)</button>
+            </footer>
         </section>
         <footer id="info">
-            <p>
-                Double-click to edit a todo
-            </p>
-            <p>
-                Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a>
-            </p>
-            <p>
-                Created by <a href="http://twitter.com/ffesseler">Florian Fesseler</a>
-            </p>
-            <p>
-                Cleanup, edits by <a href="http://github.com/boushley">Aaron Boushley</a>
-            </p>
+            <p>Double-click to edit a todo</p>
+            <p>Created by <a href="http://puremvc.org">Mike Britton and Cliff Hall for the PureMVC Project</a></p>
+            <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
         </footer>
-    </body>
+        
+        <!-- Scripts here. Don't remove this ↓ -->
+        <script src="assets/base.js"></script>
 
-    <!-- PUREMVC LIBRARY -->
-    <script language="JavaScript" src="lib/puremvc-1.0.1.min.js"></script>
+		<!-- FLATIRION DIRECTOR ROUTING LIBRARY -->
+		<script src="assets/director-1.1.6.min.js"></script>
+        
+        <!-- PUREMVC LIBRARY -->
+        <script src="js/libs/puremvc-1.0.1.min.js"></script>
 
-    <!-- APPLICATION CONSTANTS -->
-    <script language="JavaScript" src="AppConstants.js"></script>
+        <!-- APPLICATION CONSTANTS -->
+        <script src="js/src/AppConstants.js"></script>
 
-    <!-- PROXIES -->
-    <script language="JavaScript" src="src/model/proxy/TodoProxy.js"></script>
+        <!-- PROXIES -->
+        <script src="js/src/model/proxy/TodoProxy.js"></script>
     
-    <!-- VIEW COMPONENTS -->
-    <script language="JavaScript" src="src/view/component/TodoForm.js"></script>
-    
-    <!-- MEDIATORS -->
-    <script language="JavaScript" src="src/view/mediator/TodoFormMediator.js"></script>
+        <!-- EVENTS -->
+        <script src="js/src/view/event/AppEvents.js"></script>
+        
+        <!-- VIEW COMPONENTS -->
+        <script src="js/src/view/component/TodoForm.js"></script>
+        
+        <!-- MEDIATORS -->
+        <script src="js/src/view/mediator/RoutesMediator.js"></script>
+        <script src="js/src/view/mediator/TodoFormMediator.js"></script>
 
-    <!-- COMMANDS -->
-    <script language="JavaScript" src="src/controller/command/StartupCommand.js"></script>
-    <script language="JavaScript" src="src/controller/command/PrepControllerCommand.js"></script>
-    <script language="JavaScript" src="src/controller/command/PrepModelCommand.js"></script>
-    <script language="JavaScript" src="src/controller/command/PrepViewCommand.js"></script>
-    <script language="JavaScript" src="src/controller/command/TodoCommand.js"></script>
+        <!-- COMMANDS -->
+        <script src="js/src/controller/command/StartupCommand.js"></script>
+        <script src="js/src/controller/command/PrepControllerCommand.js"></script>
+        <script src="js/src/controller/command/PrepModelCommand.js"></script>
+        <script src="js/src/controller/command/PrepViewCommand.js"></script>
+        <script src="js/src/controller/command/TodoCommand.js"></script>
     
-    <!-- APPLICATION -->
-    <script language="JavaScript" src="Application.js"></script>
-    
-    <!-- START THE APPLICATION -->
-    <script language="JavaScript">
-        // initialize the app when all DOM content has loaded.
+        <!-- APPLICATION -->
+        <script src="js/src/app.js"></script>
+        
+        <!-- START THE APPLICATION -->
+        <script language="JavaScript">
         document.addEventListener('DOMContentLoaded', function() 
         {
             var app = new todomvc.Application;
         });
-    </script>
-
+        </script>
+    </body>
 </html>
