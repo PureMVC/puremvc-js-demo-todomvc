@@ -22,10 +22,11 @@ puremvc.define({
         }, 
  
         loadData: function() {
+            var storageObject;
             if ( !localStorage.getItem( this.LOCAL_STORAGE ) ) {
                 this.saveData();
             }
-            var storageObject = JSON.parse( localStorage.getItem( this.LOCAL_STORAGE ) );
+            storageObject = JSON.parse( localStorage.getItem( this.LOCAL_STORAGE ) );
             this.todos = storageObject.todos;
             this.filter = storageObject.filter;
             this.computeStats();
@@ -43,10 +44,11 @@ puremvc.define({
         },
         
         filterTodos: function ( filter ) {
+            var i;
             this.filter = filter;
             this.saveData();
  
-            var i = this.todos.length, 
+            i = this.todos.length, 
                 filtered = [];
  
             while ( i-- ) {

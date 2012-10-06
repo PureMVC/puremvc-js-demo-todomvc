@@ -19,7 +19,6 @@ puremvc.define({
         // Code to be executed when the Mediator instance is registered with the View
         onRegister: function() {
             this.setViewComponent( new todomvc.view.component.TodoForm );
-            
             this.viewComponent.addEventListener( todomvc.view.event.AppEvents.TOGGLE_COMPLETE, this );
             this.viewComponent.addEventListener( todomvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL, this );
             this.viewComponent.addEventListener( todomvc.view.event.AppEvents.UPDATE_ITEM, this );

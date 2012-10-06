@@ -4,13 +4,7 @@
  * @class AppEvents
  * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  */
-puremvc.define({
-        name: 'todomvc.view.event.AppEvents'
-    },
-               
-    // INSTANCE MEMBERS
-    {
-    },
+puremvc.define({ name: 'todomvc.view.event.AppEvents' }, {},
                
     // STATIC MEMBERS   
     {   
@@ -50,6 +44,5 @@ puremvc.define({
                object.fireEvent( event.type, event );
             }
         },
-
     }
 );

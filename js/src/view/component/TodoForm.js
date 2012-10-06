@@ -64,13 +64,13 @@ puremvc.define({
             },
             
             dispatchToggleComplete: function( event ) {
-                var todo = this.getTodoById( event.target.getAttribute( 'data-todo-id' ) );
-                todo.id = event.target.getAttribute( 'data-todo-id' );
-                todo.completed = event.target.checked;
-                
-                var toggleItemCompleteEvent = this.createEvent( todomvc.view.event.AppEvents.TOGGLE_COMPLETE );
-                toggleItemCompleteEvent.todo = todo;
-                this.dispatchEvent( toggleItemCompleteEvent );                
+               var todo, toggleItemCompleteEvent;
+               todo = this.getTodoById( event.target.getAttribute( 'data-todo-id' ) );
+               todo.id = event.target.getAttribute( 'data-todo-id' );
+               todo.completed = event.target.checked;
+               toggleItemCompleteEvent = this.createEvent( todomvc.view.event.AppEvents.TOGGLE_COMPLETE );
+               toggleItemCompleteEvent.todo = todo;
+               this.dispatchEvent( toggleItemCompleteEvent );                
             },         
                
             dispatchToggleCompleteAll: function(checked) {
@@ -85,32 +85,38 @@ puremvc.define({
             },   
                
             dispatchDelete: function( id ) {
-                var deleteItemEvent= this.createEvent( todomvc.view.event.AppEvents.DELETE_ITEM );
+                var deleteItemEvent = this.createEvent( todomvc.view.event.AppEvents.DELETE_ITEM );
                 deleteItemEvent.todoId = id;
                 this.dispatchEvent( deleteItemEvent );
             },
                
             dispatchAddTodo: function( event ) {
-                var todo = {};
+                var addItemEvent, todo = {};
                 todo.completed = false;
                 todo.title = this.newTodoField.value.trim();
                 if ( todo.title === '' ) return;
-                var addItemEvent = this.createEvent( todomvc.view.event.AppEvents.ADD_ITEM );                
+                addItemEvent = this.createEvent( todomvc.view.event.AppEvents.ADD_ITEM );                
                 addItemEvent.todo = todo;
                 this.dispatchEvent( addItemEvent );
             },
                
             dispatchUpdateTodo: function(event) {
-                var todo = {};
+                var eventType, updateItemEvent, todo = {};
                 todo.id = event.target.id.slice(6);
                 todo.title = event.target.value.trim();
                 todo.completed = event.target.completed;
-                var updateItemEvent = this.createEvent( todomvc.view.event.AppEvents.UPDATE_ITEM );
+                eventType = ( todo.title === "" ) ? 
+                    todomvc.view.event.AppEvents.DELETE_ITEM : todomvc.view.event.AppEvents.UPDATE_ITEM;
+                updateItemEvent = this.createEvent( eventType );
                 updateItemEvent.todo = todo;
+                updateItemEvent.todoId = todo.id;
                 this.dispatchEvent( updateItemEvent );
             },
                
             setFilteredTodoList: function( data ) {
+                var todo, checkbox, label, deleteLink, divDisplay, 
+                    inputEditTodo, li, i, todoId, div, inputEditTodo;
+                
                 // Update instance data
                 this.todos  = data.todos;
                 this.stats  = data.stats;
@@ -122,8 +128,7 @@ puremvc.define({
                 // Create Todo list
                 this.todoList.innerHTML = '';
                 this.newTodoField.value = '';                                
-                var todo, checkbox, label, deleteLink, divDisplay, inputEditTodo, li;
-                for ( var i=0; i < this.todos.length; i++ ) {
+                for ( i=0; i < this.todos.length; i++ ) {
             
                     todo = this.todos[i];
             
@@ -159,9 +164,9 @@ puremvc.define({
                     divDisplay.appendChild( label );
                     divDisplay.appendChild( deleteLink );
                     todomvc.view.event.AppEvents.addEventListener( divDisplay, 'dblclick', function() {
-                        var todoId = this.getAttribute( 'data-todo-id' );
-                        var div = document.getElementById( 'li_' + todoId );
-                        var inputEditTodo = document.getElementById( 'input_' + todoId );
+                        todoId = this.getAttribute( 'data-todo-id' );
+                        div = document.getElementById( 'li_' + todoId );
+                        inputEditTodo = document.getElementById( 'input_' + todoId );
                         div.className = 'editing';
                         inputEditTodo.focus();
                         
@@ -224,8 +229,8 @@ puremvc.define({
             },
                
             updateTodoCount: function() {
-                var number = document.createElement( 'strong' );
-                var text = ' ' + (this.stats.todoLeft === 1 ? 'item' : 'items' ) + ' left';            
+                var number = document.createElement( 'strong' ),
+                    text = ' ' + (this.stats.todoLeft === 1 ? 'item' : 'items' ) + ' left';            
                 number.innerHTML = this.stats.todoLeft;
                 this.todoCount.innerHTML = null;
                 this.todoCount.appendChild( number );

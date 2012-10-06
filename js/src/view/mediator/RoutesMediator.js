@@ -17,15 +17,14 @@ puremvc.define({
         // setup the routes when mediator is registered
         onRegister: function() {
             
-            var todoProxy    = this.facade.retrieveProxy( todomvc.model.proxy.TodoProxy.NAME );
-            var defaultRoute = this.getRouteForFilter( todoProxy.filter );
-    
-            var options = { resource:this, notfound:this.handleFilterAll },
-                routes = {
-                '/':            this.handleFilterAll,
-                '/active':      this.handleFilterActive,
-                '/completed':   this.handleFilterCompleted
-            };
+            var todoProxy    = this.facade.retrieveProxy( todomvc.model.proxy.TodoProxy.NAME ),
+                defaultRoute = this.getRouteForFilter( todoProxy.filter ), 
+                options      = { resource:this, notfound:this.handleFilterAll },
+                routes       = {
+                   '/':            this.handleFilterAll,
+                   '/active':      this.handleFilterActive,
+                   '/completed':   this.handleFilterCompleted
+                };
  
             this.router = new Router( routes ).configure( options );
             this.router.init( defaultRoute );
