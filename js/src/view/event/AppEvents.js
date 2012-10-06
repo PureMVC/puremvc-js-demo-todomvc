@@ -4,10 +4,8 @@
  * @class AppEvents
  * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  */
-puremvc.define(
-    // CLASS INFO
-    {
-        name : 'todomvc.view.event.AppEvents'
+puremvc.define({
+        name: 'todomvc.view.event.AppEvents'
     },
                
     // INSTANCE MEMBERS
@@ -36,15 +34,22 @@ puremvc.define(
             return event;
         },
         
-        // Dispatch event (cross-browser)
-        dispatchEvent: function( object, event ) {
-            if (object.dispatchEvent) {
-               object.dispatchEvent( event );
-            } else if (object.fireEvent) {
-               object.fireEvent( event );
+        // Add event listener (cross-browser)
+        addEventListener: function( object, type, listener, useCapture ) {               
+            if ( object.addEventListener ) {
+               object.addEventListener( type, listener, useCapture );
+            } else if ( object.attachEvent ) {
+               object.attachEvent( type, listener );
             }
         },
-               
+        // Dispatch event (cross-browser)
+        dispatchEvent: function( object, event ) {
+            if ( object.dispatchEvent ) {
+               object.dispatchEvent( event );
+            } else if ( object.fireEvent ) {
+               object.fireEvent( event.type, event );
+            }
+        },
 
     }
 );

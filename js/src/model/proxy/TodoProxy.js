@@ -5,20 +5,17 @@
  * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  *
  */
-puremvc.define
-(
-    // CLASS INFO
-    {
-        name : 'todomvc.model.proxy.TodoProxy',
-        parent : puremvc.Proxy
+puremvc.define({
+        name: 'todomvc.model.proxy.TodoProxy',
+        parent: puremvc.Proxy
     },
     
     // INSTANCE MEMBERS    
     {
-        todos : [],
-        stats : {},
+        todos: [],
+        stats: {},
         filter: todomvc.AppConstants.FILTER_ALL,
-        LOCAL_STORAGE:'todos-puremvc',
+        LOCAL_STORAGE: 'todos-puremvc',
         
         onRegister: function() {
             this.loadData();

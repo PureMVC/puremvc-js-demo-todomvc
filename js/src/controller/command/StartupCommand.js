@@ -4,10 +4,7 @@
  * @class StartupCommand
  * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  */
-puremvc.define
-(
-    // CLASS INFO
-    {
+puremvc.define({
         name: 'todomvc.controller.command.StartupCommand',
         parent: puremvc.MacroCommand
     },

@@ -4,11 +4,9 @@
  * @class TodoForm
  * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  */
-puremvc.define(
-    // CLASS INFO
-    {
-        name : 'todomvc.view.component.TodoForm',
-        constructor : function(event) {
+puremvc.define({
+        name: 'todomvc.view.component.TodoForm',
+        constructor: function(event) {
             // data
             this.todos  = [];
             this.stats  = {};
@@ -51,7 +49,7 @@ puremvc.define(
                
     // INSTANCE MEMBERS
     {
-            ENTER_KEY : 13,
+            ENTER_KEY: 13,
             
             addEventListener: function ( type, listener, useCapture ){
                 this.todoApp.addEventListener( type, listener, useCapture );
@@ -96,7 +94,7 @@ puremvc.define(
                 var todo = {};
                 todo.completed = false;
                 todo.title = this.newTodoField.value.trim();
-                if (todo.title === '') return;
+                if ( todo.title === '' ) return;
                 var addItemEvent = this.createEvent( todomvc.view.event.AppEvents.ADD_ITEM );                
                 addItemEvent.todo = todo;
                 this.dispatchEvent( addItemEvent );
@@ -112,11 +110,11 @@ puremvc.define(
                 this.dispatchEvent( updateItemEvent );
             },
                
-            setFilteredTodoList: function( dataStruct ) {
+            setFilteredTodoList: function( data ) {
                 // Update instance data
-                this.todos  = dataStruct.todos;
-                this.stats  = dataStruct.stats;
-                this.filter = dataStruct.filter;
+                this.todos  = data.todos;
+                this.stats  = data.stats;
+                this.filter = data.filter;
                 
                 // Hide main section if no todos
                 this.main.style.display = this.stats.totalTodo ? 'block' : 'none';
@@ -130,63 +128,63 @@ puremvc.define(
                     todo = this.todos[i];
             
                     // Create checkbox
-                    checkbox = document.createElement('input');
+                    checkbox = document.createElement( 'input' );
                     checkbox.className = 'toggle';
-                    checkbox.setAttribute('data-todo-id', todo.id);
+                    checkbox.setAttribute( 'data-todo-id', todo.id );
                     checkbox.type = 'checkbox';
                     checkbox.component = this;            
-                    checkbox.addEventListener('change', function(event) {
-                        this.component.dispatchToggleComplete(event);
+                    checkbox.addEventListener('change', function( event ) {
+                        this.component.dispatchToggleComplete( event );
                     });
             
                     // Create div text
-                    label = document.createElement('label');
-                    label.setAttribute('data-todo-id', todo.id);
-                    label.appendChild(document.createTextNode(todo.title));
+                    label = document.createElement( 'label' );
+                    label.setAttribute('data-todo-id', todo.id );
+                    label.appendChild(document.createTextNode( todo.title ));
             
                     // Create delete button
-                    deleteLink = document.createElement('button');
+                    deleteLink = document.createElement( 'button' );
                     deleteLink.className = 'destroy';
-                    deleteLink.setAttribute('data-todo-id', todo.id);
+                    deleteLink.setAttribute( 'data-todo-id', todo.id );
                     deleteLink.component = this;
-                    deleteLink.addEventListener('click', function(event) {
-                        this.component.dispatchDelete(event.target.getAttribute('data-todo-id'));
+                    deleteLink.addEventListener('click', function( event ) {
+                        this.component.dispatchDelete( event.target.getAttribute( 'data-todo-id' ) );
                     });
             
                     // Create divDisplay
-                    divDisplay = document.createElement('div');
+                    divDisplay = document.createElement( 'div' );
                     divDisplay.className = 'view';
-                    divDisplay.setAttribute('data-todo-id', todo.id);
-                    divDisplay.appendChild(checkbox);
-                    divDisplay.appendChild(label);
-                    divDisplay.appendChild(deleteLink);
-                    divDisplay.addEventListener('dblclick', function() {
-                        var todoId = this.getAttribute('data-todo-id');
-                        var div = document.getElementById('li_' + todoId);
-                        var inputEditTodo = document.getElementById('input_' + todoId);
+                    divDisplay.setAttribute( 'data-todo-id', todo.id );
+                    divDisplay.appendChild( checkbox );
+                    divDisplay.appendChild( label );
+                    divDisplay.appendChild( deleteLink );
+                    divDisplay.addEventListener( 'dblclick', function() {
+                        var todoId = this.getAttribute( 'data-todo-id' );
+                        var div = document.getElementById( 'li_' + todoId );
+                        var inputEditTodo = document.getElementById( 'input_' + todoId );
                         div.className = 'editing';
                         inputEditTodo.focus();
                         
                     });
             
                     // Create todo input
-                    inputEditTodo = document.createElement('input');
+                    inputEditTodo = document.createElement( 'input' );
                     inputEditTodo.id = 'input_' + todo.id;
                     inputEditTodo.className = 'edit';
                     inputEditTodo.value = todo.title;
                     inputEditTodo.completed = todo.completed;
                     inputEditTodo.component = this;
-                    inputEditTodo.addEventListener('keypress', function( event ) {
-                        if (event.keyCode === this.component.ENTER_KEY) {
+                    inputEditTodo.addEventListener( 'keypress', function( event ) {
+                        if ( event.keyCode === this.component.ENTER_KEY ) {
                             this.component.dispatchUpdateTodo( event );
                         }
                     });            
-                    inputEditTodo.addEventListener('blur', function(event) {
-                        this.component.dispatchUpdateTodo(event);
+                    inputEditTodo.addEventListener( 'blur', function( event ) {
+                        this.component.dispatchUpdateTodo( event );
                     });
                     
                     // Create Todo ListItem and add to list
-                    li = document.createElement('li');
+                    li = document.createElement( 'li' );
                     li.id = 'li_' + todo.id;
                     li.appendChild( divDisplay );
                     li.appendChild( inputEditTodo );            
@@ -194,7 +192,7 @@ puremvc.define(
                         li.className += 'complete';
                         checkbox.checked = true;
                     }            
-                    this.todoList.appendChild(li);
+                    this.todoList.appendChild( li );
                 } 
                 
                 // Update Stats UI
@@ -206,8 +204,8 @@ puremvc.define(
             },
                
             getTodoById: function( id ) {
-                for ( i = 0; i < this.todos.length; i++) {
-                    if (this.todos[i].id === id) {
+                for ( i = 0; i < this.todos.length; i++ ) {
+                    if ( this.todos[ i ].id === id ) {
                         return this.todos[i];
                     }
                 }                
@@ -226,12 +224,12 @@ puremvc.define(
             },
                
             updateTodoCount: function() {
-                var number = document.createElement('strong');
+                var number = document.createElement( 'strong' );
                 var text = ' ' + (this.stats.todoLeft === 1 ? 'item' : 'items' ) + ' left';            
                 number.innerHTML = this.stats.todoLeft;
                 this.todoCount.innerHTML = null;
-                this.todoCount.appendChild(number);
-                this.todoCount.appendChild(document.createTextNode(text));
+                this.todoCount.appendChild( number );
+                this.todoCount.appendChild( document.createTextNode( text ) );
             }
     },
                

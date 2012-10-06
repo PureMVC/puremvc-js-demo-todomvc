@@ -4,12 +4,9 @@
  * @class PrepViewCommand
  * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
  */
-puremvc.define 
-(
-    // CLASS INFO
-    {
-        name:'todomvc.controller.command.PrepViewCommand',
-        parent:puremvc.SimpleCommand
+puremvc.define ({
+        name: 'todomvc.controller.command.PrepViewCommand',
+        parent: puremvc.SimpleCommand
     },
  
     // INSTANCE MEMBERS
