@@ -28,21 +28,21 @@ puremvc.define({
                
             // Event listeners for fixed UI elements
             this.newTodoField.component = this;
-            this.newTodoField.addEventListener( 'keypress', function( event ) {
-                if ( event.keyCode === this.component.ENTER_KEY && this.value ) {
-                    this.component.dispatchAddTodo( event );
-                }
+            todomvc.view.event.AppEvents.addEventListener( this.newTodoField, 'keypress', function( event ) {
+                    if ( event.keyCode === this.component.ENTER_KEY && this.value ) {
+                        this.component.dispatchAddTodo( event );
+                    }
             });
             
             this.clearButton.component = this;
-            this.clearButton.addEventListener( 'click', function( event ) {
-                this.component.dispatchClearCompleted( event );
+            todomvc.view.event.AppEvents.addEventListener( this.clearButton, 'click', function( event ) {
+                    this.component.dispatchClearCompleted( event );
             });
 
                
             this.toggleAllCheckbox.component = this;
-            this.toggleAllCheckbox.addEventListener( 'change', function( event ) {
-                this.component.dispatchToggleCompleteAll( event.target.checked );
+            todomvc.view.event.AppEvents.addEventListener( this.toggleAllCheckbox, 'change', function( event ) {
+                    this.component.dispatchToggleCompleteAll( event.target.checked );
             });
         }
     },
@@ -52,7 +52,7 @@ puremvc.define({
             ENTER_KEY: 13,
             
             addEventListener: function ( type, listener, useCapture ){
-                this.todoApp.addEventListener( type, listener, useCapture );
+                todomvc.view.event.AppEvents.addEventListener ( this.todoApp, type, listener, useCapture );
             },       
                
             createEvent: function( eventName ) {
@@ -133,7 +133,7 @@ puremvc.define({
                     checkbox.setAttribute( 'data-todo-id', todo.id );
                     checkbox.type = 'checkbox';
                     checkbox.component = this;            
-                    checkbox.addEventListener('change', function( event ) {
+                    todomvc.view.event.AppEvents.addEventListener( checkbox, 'change', function( event ) {
                         this.component.dispatchToggleComplete( event );
                     });
             
@@ -147,7 +147,7 @@ puremvc.define({
                     deleteLink.className = 'destroy';
                     deleteLink.setAttribute( 'data-todo-id', todo.id );
                     deleteLink.component = this;
-                    deleteLink.addEventListener('click', function( event ) {
+                    todomvc.view.event.AppEvents.addEventListener( deleteLink, 'click', function( event ) {
                         this.component.dispatchDelete( event.target.getAttribute( 'data-todo-id' ) );
                     });
             
@@ -158,7 +158,7 @@ puremvc.define({
                     divDisplay.appendChild( checkbox );
                     divDisplay.appendChild( label );
                     divDisplay.appendChild( deleteLink );
-                    divDisplay.addEventListener( 'dblclick', function() {
+                    todomvc.view.event.AppEvents.addEventListener( divDisplay, 'dblclick', function() {
                         var todoId = this.getAttribute( 'data-todo-id' );
                         var div = document.getElementById( 'li_' + todoId );
                         var inputEditTodo = document.getElementById( 'input_' + todoId );
@@ -174,12 +174,12 @@ puremvc.define({
                     inputEditTodo.value = todo.title;
                     inputEditTodo.completed = todo.completed;
                     inputEditTodo.component = this;
-                    inputEditTodo.addEventListener( 'keypress', function( event ) {
+                    todomvc.view.event.AppEvents.addEventListener(inputEditTodo, 'keypress', function( event ) {
                         if ( event.keyCode === this.component.ENTER_KEY ) {
                             this.component.dispatchUpdateTodo( event );
                         }
                     });            
-                    inputEditTodo.addEventListener( 'blur', function( event ) {
+                    todomvc.view.event.AppEvents.addEventListener( inputEditTodo, 'blur', function( event ) {
                         this.component.dispatchUpdateTodo( event );
                     });
                     

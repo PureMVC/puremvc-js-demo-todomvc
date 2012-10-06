@@ -13,8 +13,8 @@ puremvc.define ({
     {
         /** @override */
         execute: function (note) {
-            this.facade.registerMediator( new todomvc.view.mediator.TodoFormMediator );
-            this.facade.registerMediator( new todomvc.view.mediator.RoutesMediator );
+            this.facade.registerMediator( new todomvc.view.mediator.TodoFormMediator() );
+            this.facade.registerMediator( new todomvc.view.mediator.RoutesMediator() );
         }
     }     
 );
