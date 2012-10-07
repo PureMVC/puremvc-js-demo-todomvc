@@ -243,7 +243,7 @@ puremvc.define({
                
             updateTodoCount: function() {
                 var number = document.createElement( 'strong' ),
-                    text = ' ' + (this.stats.todoLeft === 1 ? 'item' : 'items' ) + ' left';            
+                    text   = ' ' + (this.stats.todoLeft === 1 ? 'item' : 'items' ) + ' left';            
                 number.innerHTML = this.stats.todoLeft;
                 this.todoCount.innerHTML = null;
                 this.todoCount.appendChild( number );
