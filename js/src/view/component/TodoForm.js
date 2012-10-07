@@ -73,7 +73,7 @@ puremvc.define({
                this.dispatchEvent( toggleItemCompleteEvent );                
             },         
                
-            dispatchToggleCompleteAll: function(checked) {
+            dispatchToggleCompleteAll: function( checked ) {
                 var toggleCompleteAllEvent = this.createEvent( todomvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL );
                 toggleCompleteAllEvent.doToggleComplete = checked;
                 this.dispatchEvent( toggleCompleteAllEvent );
@@ -144,8 +144,8 @@ puremvc.define({
             
                     // Create div text
                     label = document.createElement( 'label' );
-                    label.setAttribute('data-todo-id', todo.id );
-                    label.appendChild(document.createTextNode( todo.title ));
+                    label.setAttribute( 'data-todo-id', todo.id );
+                    label.appendChild( document.createTextNode( todo.title ) );
             
                     // Create delete button
                     deleteLink = document.createElement( 'button' );
@@ -179,7 +179,7 @@ puremvc.define({
                     inputEditTodo.value = todo.title;
                     inputEditTodo.completed = todo.completed;
                     inputEditTodo.component = this;
-                    todomvc.view.event.AppEvents.addEventListener(inputEditTodo, 'keypress', function( event ) {
+                    todomvc.view.event.AppEvents.addEventListener( inputEditTodo, 'keypress', function( event ) {
                         if ( event.keyCode === this.component.ENTER_KEY ) {
                             this.component.dispatchUpdateTodo( event );
                         }
@@ -200,8 +200,9 @@ puremvc.define({
                     this.todoList.appendChild( li );
                 } 
                 
-                // Update Stats UI
+                // Update UI
                 this.footer.style.display = this.stats.totalTodo ? 'block' : 'none';
+                this.updateToggleAllCheckbox();
                 this.updateClearButton();
                 this.updateTodoCount();
                 this.updateFilter();
@@ -209,6 +210,7 @@ puremvc.define({
             },
                
             getTodoById: function( id ) {
+               var i;
                 for ( i = 0; i < this.todos.length; i++ ) {
                     if ( this.todos[ i ].id === id ) {
                         return this.todos[i];
@@ -221,6 +223,17 @@ puremvc.define({
                 this.filterActive.className     = ( this.filter === todomvc.AppConstants.FILTER_ACTIVE ) ? 'selected' : '';
                 this.filterCompleted.className  = ( this.filter === todomvc.AppConstants.FILTER_COMPLETED ) ? 'selected' : '';
             
+            },
+               
+            updateToggleAllCheckbox: function() {
+               var i, checked = true;
+               for ( i = 0; i < this.todos.length; i++ ) {
+                    if ( this.todos[ i ].completed === false ) {
+                        checked = false;
+                        break;
+                    }
+               }  
+               this.toggleAllCheckbox.checked = checked;
             },
                
             updateClearButton: function() {

@@ -11,9 +11,11 @@ puremvc.define({
   
     // INSTANCE MEMBERS
     {
-        /** @override */
-        execute: function (note)
-        {
+        /** 
+         * Register Proxies with the Model
+         * @override
+         */
+        execute: function (note) {
             this.facade.registerProxy( new todomvc.model.proxy.TodoProxy() );
         }
     }    

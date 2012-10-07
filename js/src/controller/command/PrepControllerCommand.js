@@ -11,7 +11,10 @@ puremvc.define({
   
     // INSTANCE MEMBERS
     {
-        /** @override */
+        /** 
+         * Register Commands with the Controller
+         * @override
+         */
         execute: function (note) {   
             // This registers multiple notes to a single command which performs different logic based on the note name.
             // In a more complex app, we'd usually be registering a different command to each notification name.

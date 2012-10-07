@@ -11,7 +11,10 @@ puremvc.define ({
   
     // INSTANCE MEMBERS
     {
-        /** @override */
+        /** 
+         * Perform business logic (in this case, based on Notification name)
+         * @override
+         */
         execute: function ( note ) {
             var proxy = this.facade.retrieveProxy( todomvc.model.proxy.TodoProxy.NAME );
             

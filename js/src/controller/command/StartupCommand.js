@@ -11,10 +11,11 @@ puremvc.define({
 
     // INSTANCE MEMBERS 
     {
-        /** @override */
-        initializeMacroCommand: function ()
-        {
-            // Register Commands with the Facade
+        /** 
+         * Add the sub-commands for this MacroCommand
+         * @override
+         */
+        initializeMacroCommand: function () {
             this.addSubCommand( todomvc.controller.command.PrepControllerCommand );
             this.addSubCommand( todomvc.controller.command.PrepModelCommand );
             this.addSubCommand( todomvc.controller.command.PrepViewCommand );  
