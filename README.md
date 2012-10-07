@@ -7,7 +7,7 @@ The pseudo-classes are written in PureMVC's optional built-in style.
 * [Discussion](http://forums.puremvc.org/index.php?topic=2049.0)
 
 ## Screenshot
-![PureMVC JavaScript Demo: TodoMVC](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-JS-TodoMVC.png)
+![PureMVC JavaScript Demo: TodoMVC](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-JS-TodoMVC.png?github)
 
 ## Status
 Production - [Version 1.2](https://github.com/PureMVC/puremvc-js-demo-todomvc/blob/master/VERSION)
