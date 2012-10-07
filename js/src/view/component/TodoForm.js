@@ -226,7 +226,7 @@ puremvc.define({
             },
                
             updateToggleAllCheckbox: function() {
-               var i, checked = true;
+               var i, checked = ( this.todos.length > 0 );
                for ( i = 0; i < this.todos.length; i++ ) {
                     if ( this.todos[ i ].completed === false ) {
                         checked = false;
