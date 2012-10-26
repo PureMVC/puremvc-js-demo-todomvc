@@ -1,5 +1,4 @@
 PureMVC Javascript Demo - TodoMVC
-Copyright(c) 2012 Mike Britton, Cliff Hall, Addy Osmani, & Sindre Sorhus
 --------------------------------------------------------------------------
 Release Date: 10/07/2012
     Platform: JavaScript 
@@ -7,7 +6,6 @@ Release Date: 10/07/2012
     Revision: 2
       Author: Mike Britton <mike.britton@puremvc.org>
             : Cliff Hall <cliff.hall@puremvc.org>
-     License: MIT
 --------------------------------------------------------------------------
 1.2 - More code tidying and fixes in response to Sindre's pull request notes. 
       Finished implementing cross-browser event handling. 
