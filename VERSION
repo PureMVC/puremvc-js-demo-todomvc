@@ -1,12 +1,14 @@
 PureMVC Javascript Demo - TodoMVC
 --------------------------------------------------------------------------
-Release Date: 10/07/2012
+Release Date: 03/09/2014
     Platform: JavaScript 
      Version: 1
-    Revision: 2
+    Revision: 3
       Author: Mike Britton <mike.britton@puremvc.org>
             : Cliff Hall <cliff.hall@puremvc.org>
 --------------------------------------------------------------------------
+1.3 - Changes to TodoMVC spec: Add items to end of list, ESC abandons edit.
+
 1.2 - More code tidying and fixes in response to Sindre's pull request notes. 
       Finished implementing cross-browser event handling. 
       Toggle All checkbox stays in sync with content.

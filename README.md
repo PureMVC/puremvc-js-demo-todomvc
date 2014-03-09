@@ -10,7 +10,7 @@ The pseudo-classes are written in PureMVC's optional built-in style.
 ![PureMVC JavaScript Demo: TodoMVC](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-JS-TodoMVC.png?github)
 
 ## Status
-Production - [Version 1.2](https://github.com/PureMVC/puremvc-js-demo-todomvc/blob/master/VERSION)
+Production - [Version 1.3](https://github.com/PureMVC/puremvc-js-demo-todomvc/blob/master/VERSION)
 
 ## Platforms / Technologies
 * [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
@@ -18,8 +18,8 @@ Production - [Version 1.2](https://github.com/PureMVC/puremvc-js-demo-todomvc/bl
 
 ## License
 * Original TodoMVC Project - Copyright © Addy Osmani, Sindre Sorhus
-* PureMVC TodoMVC Demo for JavaScript - Copyright © 2012 Mike Britton, Cliff Hall 
-* PureMVC - Copyright © 2006-2012 Futurescale, Inc.
+* PureMVC TodoMVC Demo for JavaScript - Copyright © 2012-2014 Mike Britton, Cliff Hall 
+* PureMVC - Copyright © 2006-2014 Futurescale, Inc.
 * All rights reserved.
 
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
