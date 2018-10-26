@@ -3,7 +3,7 @@ This demo is a PureMVC port of the [TodoMVC Project](http://todomvc.com), a Java
 
 The pseudo-classes are written in PureMVC's optional built-in style.
 
-* [Live Demo](http://darkstar.puremvc.org/content_header.html?url=http://puremvc.org/pages/demos/JS/Demo_JS_TodoMVC/&desc=PureMVC%20JavaScript%20Demo:%20TodoMVC)
+* [Live Demo](http://puremvc.org/pages/demos/JS/Demo_JS_TodoMVC/)
 * [Discussion](http://forums.puremvc.org/index.php?topic=2049.0)
 
 ## Screenshot
